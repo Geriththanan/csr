@@ -32,17 +32,24 @@
         swal({
             title: "Are you sure?",
             text: "Your will not be able to recover this imaginary file!",
-            type: "warning",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
             showCancelButton: true,
             confirmButtonClass: "btn-danger",
             confirmButtonText: "Yes, delete it!",
-            closeOnConfirm: false
+            closeOnConfirm: true
         }).then(function (value) {
             if (value) {
                 thisBtn.parent().submit();
             }
+            else {
+                swal("Your post is safe!");
+            }
         })
     });
+
+
 </script>
 </body>
 </html>

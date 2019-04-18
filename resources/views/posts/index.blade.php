@@ -23,17 +23,23 @@
                         <img style="width:100%" src="/storage/cover_image/{{$post->cover_image}}">
                     </div>
                     <div class="col-md-8 col-sm-8">
-                        <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
+                        <h3><a href="/posts/{{$post->id}}">{!!Str::limit($post->title,67,'....')!!}</a></h3>
                         <small>Written on {{$post->created_at}} by {{$post->user->name}}</small><br>
                         <div class="container text-muted">
-                            {!!$post->body!!}
+                            {!!Str::limit($post->body,314,'....')!!}
                         </div>
+                        <div>
+                            <button class="btn btn-link pull-right float-right"><a href="/posts/{{$post->id}}">Read More..</a></button>
+                        </div>
+                    </div>
+                    <div>
+
                     </div>
                 </div>
             </div><br>
-        @endforeach
-        {{$posts->links()}}
-    @else
-        <p>No Posts Found!</p>
-    @endif
+@endforeach
+{{$posts->links()}}
+@else
+<p>No Posts Found!</p>
+@endif
 @endsection
